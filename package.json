@@ -1,0 +1,35 @@
+{
+  "//1": "describes your app and its dependencies",
+  "//2": "https://docs.npmjs.com/files/package.json",
+  "//3": "updating this file will download and update your packages",
+  "name": "meetings-bot-21",
+  "version": "1.0.0",
+  "description": "A Slack Bot to organise meetings",
+  "author": {
+    "name": "Ceiran McCabe",
+    "email": "ceiran.mccabeibm.com"
+  },
+  "main": "index.js",
+  "scripts": {
+    "prestart": "concurrently \"nodemon --inspect ./index.js\"",
+    "start": "node index.js",
+    "dev": "concurrently \"node ./dev/ngrok.js\" \"nodemon --inspect ./index.js\""
+  },
+  "dependencies": {
+    "express": "4.16.4",
+    "slackbots": "1.2.0"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/hello-express"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "4.1.0",
+    "ngrok": "3.1.0",
+    "nodemon": "1.18.9"
+  }
+}
