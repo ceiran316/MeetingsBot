@@ -3,6 +3,11 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const SlackBot = require('slackbots'); // import slackbot library
+const mongoose = require('mongoose');  // import mongoose library for accessing MongoDB
+
+var http = require('http');
+http.createServer((req, res) => {}).listen(1337, '127.0.0.1');
 
 const { createEventAdapter } = require('@slack/events-api');
 
@@ -49,3 +54,9 @@ slackEvents.on('message', messageEvent);
 slackEvents.on('link_shared', linkEvent);
 
 slackEvents.on('error', errorEvent);
+
+/* Create MongoDB Connection */
+mongoose.Promise = require('bluebird');
+mongoose.connect('mongodb://localhost/slackbot', { useMongoClient: true, promiseLibrary: require('bluebird') })
+  .then(() =>  console.log('connection succesful'))
+  .catch((err) => console.error(err));
